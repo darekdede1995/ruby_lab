@@ -1,0 +1,26 @@
+class PriceValidateMin < ActiveModel::Validator
+  def validate(record)
+    if !(record.event.price_high >= record.price)
+      record.errors.add('cena', 'zbyt niska cena')
+    end
+  end
+end
+
+class PriceValidateMax < ActiveModel::Validator
+  def validate(record)
+    if !(record.event.price_low <= record.price)
+      record.errors.add('cena', 'zbyt duza cena')
+    end
+  end
+end
+
+class Ticket < ApplicationRecord
+  include ActiveModel::Validations
+  validates_with PriceValidate1
+  validates_with PriceValidate2
+
+  validates :name, :presence => true, :length => { :minimum => 6 }
+  validates :email_address, :presence => true
+  validates :price, :presence => true
+  belongs_to :event
+end

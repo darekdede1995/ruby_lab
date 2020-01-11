@@ -1,0 +1,9 @@
+<%= render "events_list", events: Event.all %>
+
+<h1>New Ticket</h1>
+
+<%= render 'form', ticket: Ticket.new( :user_id=>current_user.id)  %>
+
+
+
+<%= link_to 'Back', tickets_path %>
