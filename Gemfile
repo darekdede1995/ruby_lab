@@ -54,4 +54,4 @@ gem 'sassc-rails', '>= 2.1.0'
 
 gem 'responders', '~> 2.4.1', '< 3.0'
 
-gem 'devise', '~> 4.3', '< 4.4'
+gem 'devise', '~> 4.7'
